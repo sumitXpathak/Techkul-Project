@@ -9,6 +9,7 @@ const facultyMembers = [
     designation: "Principal",
     department: "Administration",
     email: "principal@amcollege.ac.in",
+    image: "1755320413Prof.(Dr. ) Md.  Nazir Akhtar.png",
   },
   {
     id: 2,
@@ -16,6 +17,7 @@ const facultyMembers = [
     designation: "Assistant Professor",
     department: "Science",
     email: "anjali.v@amcollege.ac.in",
+    image: "1616078820MALAY.jpeg",
   },
   {
     id: 3,
@@ -23,6 +25,7 @@ const facultyMembers = [
     designation: "Associate Professor",
     department: "Commerce",
     email: "vikram.s@amcollege.ac.in",
+    image: "WhatsApp Image 2026-01-19 at 9.06.29 PM.jpeg",
   },
   {
     id: 4,
@@ -30,6 +33,7 @@ const facultyMembers = [
     designation: "Professor, English",
     department: "Arts",
     email: "kavita.d@amcollege.ac.in",
+    image: "image.png",
   },
   {
     id: 5,
@@ -37,6 +41,7 @@ const facultyMembers = [
     designation: "Lab Instructor",
     department: "Science",
     email: "amit.k@amcollege.ac.in",
+    image: "WhatsApp Image 2026-01-19 at 9.13.39 PM.jpeg",
   },
 ];
 
