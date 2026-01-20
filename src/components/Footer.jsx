@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Facebook, Twitter, Instagram, Mail, MapPin, Phone } from 'lucide-react';
 
 const Footer = () => {
@@ -14,14 +15,16 @@ const Footer = () => {
           </p>
         </div>
 
-        {/* Column 2: Quick Links */}
+        {/* Column 2: Quick Links (UPDATED WITH REACT LINKS) */}
         <div>
           <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
           <ul className="space-y-2 text-gray-400 text-sm">
-            <li><a href="/admissions" className="hover:text-blue-400 transition">Admissions</a></li>
-            <li><a href="/academics" className="hover:text-blue-400 transition">Academics</a></li>
-            <li><a href="/results" className="hover:text-blue-400 transition">Exam Results</a></li>
-            <li><a href="/about" className="hover:text-blue-400 transition">About Us</a></li>
+            <li><Link to="/about" className="hover:text-blue-400 transition">About Us</Link></li>
+            <li><Link to="/academics" className="hover:text-blue-400 transition">Academics</Link></li>
+            <li><Link to="/admissions" className="hover:text-blue-400 transition">Admissions</Link></li>
+            <li><Link to="/faculty" className="hover:text-blue-400 transition">Faculty Directory</Link></li>
+            <li><Link to="/tour" className="hover:text-blue-400 transition">Virtual Tour</Link></li>
+            <li><Link to="/contact" className="hover:text-blue-400 transition">Contact Us</Link></li>
           </ul>
         </div>
 
