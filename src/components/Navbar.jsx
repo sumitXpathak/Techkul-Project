@@ -36,7 +36,7 @@ const Navbar = () => {
                 <GraduationCap className="h-6 w-6" />
             </div>
             <span className="text-xl font-bold text-gray-900 tracking-tight group-hover:text-blue-700 transition-colors">
-              Techkul<span className="text-blue-600">.Ed</span>
+              Anugrah Memorial College<span className="text-blue-600"></span>
             </span>
           </Link>
 
