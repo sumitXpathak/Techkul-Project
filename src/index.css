@@ -1,3 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Global Polish */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Outfit', sans-serif; /* Applies the modern font */
+  @apply antialiased text-gray-800 bg-gray-50;
+  overflow-x: hidden; /* Prevents accidental horizontal scrollbars */
+}
+
+/* Custom Scrollbar for Webkit browsers */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-gray-100;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-blue-600 rounded-full;
+}
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-blue-800;
+}
