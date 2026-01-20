@@ -25,7 +25,7 @@ const VirtualTour = () => {
         <div className="relative aspect-video w-full max-w-4xl mx-auto rounded-2xl overflow-hidden shadow-2xl border border-gray-800">
           <iframe 
             className="w-full h-full"
-            src="https://www.youtube.com/embed/dQw4w9WgXcQ?mute=1" // Replace with actual college video
+            src="WhatsApp Video 2026-01-20 at 3.45.02 PM.mp4" // Replace with actual college video
             title="Campus Tour"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
