@@ -1,207 +1,266 @@
 import React, { useState } from 'react';
 import { 
-  CheckCircle, FileText, Calendar, DollarSign, 
-  HelpCircle, ChevronRight, UploadCloud, AlertCircle 
+  CheckCircle, Calendar, FileText, AlertCircle, 
+  User, Mail, Phone, BookOpen, Percent, Send, 
+  ArrowRight, ShieldCheck, Clock 
 } from 'lucide-react';
 
-const Addmissions = () => {
-  const [activeStep, setActiveStep] = useState(1);
+const Admissions = () => {
+  // State to handle form data
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
+    fullName: '',
     email: '',
     phone: '',
-    course: 'Select Course',
-    dob: ''
+    course: '',
+    percentage: ''
   });
 
-  const handleNext = (e) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Handle input changes
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  // Simulate form submission with loading state
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setActiveStep((prev) => prev + 1);
+    setIsSubmitting(true);
+    
+    // Simulate network request
+    setTimeout(() => {
+        alert(`Application Submitted for ${formData.fullName}!\nWe will contact you at ${formData.email}.`);
+        setFormData({ fullName: '', email: '', phone: '', course: '', percentage: '' });
+        setIsSubmitting(false);
+    }, 1500);
   };
 
   return (
-    <div className="pt-20 min-h-screen bg-gray-50 dark:bg-slate-900 pb-16 font-sans transition-colors duration-300">
+    <div className="min-h-screen bg-slate-50 font-sans text-gray-800 selection:bg-blue-200">
       
-      {/* 1. HERO HEADER */}
-      <div className="bg-blue-900 text-white py-16 mb-12">
-        <div className="max-w-7xl mx-auto px-4 text-center">
-          <h1 className="text-4xl font-bold mb-4">Admissions 2026-27</h1>
-          <p className="text-blue-200 text-lg max-w-2xl mx-auto">
-            Take the first step towards a bright future. Fill out the application form below.
+      {/* 1. PAGE HEADER WITH BACKGROUND PATTERN */}
+      <div className="relative bg-blue-900 text-white py-20 overflow-hidden">
+        {/* Abstract background shapes */}
+        <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -mr-10 -mt-10 blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-40 h-40 bg-cyan-400/10 rounded-full -ml-10 -mb-10 blur-2xl"></div>
+        
+        <div className="relative z-10 max-w-7xl mx-auto px-4 text-center">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-800/50 border border-blue-700 text-blue-200 text-sm mb-4 backdrop-blur-sm">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+            </span>
+            Applications Open for 2026-27
+          </div>
+          <h1 className="text-4xl md:text-5xl font-extrabold mb-4 tracking-tight">Begin Your Journey</h1>
+          <image alt=""/>
+          <p className="text-blue-100 text-lg max-w-2xl mx-auto font-light">
+            Join a legacy of excellence. Complete the form below to take the first step towards your future at Anugrah Memorial College.
           </p>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-3 gap-8">
-        
-        {/* 2. PROGRESS SIDEBAR */}
-        <div className="lg:col-span-1 space-y-6">
-          {/* Progress Card */}
-          <div className="bg-white dark:bg-slate-800 rounded-xl shadow-md p-6 border border-gray-100 dark:border-slate-700">
-            <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4">Application Progress</h3>
-            <div className="space-y-0">
-              {['Personal Details', 'Academic History', 'Document Upload', 'Fee Payment'].map((step, index) => {
-                const stepNum = index + 1;
-                const isActive = activeStep === stepNum;
-                const isCompleted = activeStep > stepNum;
+      <div className="max-w-7xl mx-auto px-4 -mt-10 pb-20 relative z-20">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          
+          {/* LEFT SIDE: INFO & TIMELINE (Span 5 cols) */}
+          <div className="lg:col-span-5 space-y-6">
+            
+            {/* Card 1: The Process Timeline */}
+            <div className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100">
+              <h2 className="text-xl font-bold text-gray-900 mb-6 flex items-center">
+                <FileText className="mr-2 text-blue-600 w-5 h-5" /> Admission Process
+              </h2>
+              
+              <div className="space-y-6 relative pl-2">
+                {/* Vertical Line */}
+                <div className="absolute left-[19px] top-2 bottom-4 w-0.5 bg-gray-200"></div>
 
-                return (
-                  <div key={index} className="flex items-center relative pb-8 last:pb-0">
-                    {/* Vertical Line */}
-                    {index < 3 && (
-                      <div className={`absolute left-3.5 top-8 w-0.5 h-full ${isCompleted ? 'bg-green-500' : 'bg-gray-200 dark:bg-slate-600'}`}></div>
-                    )}
-                    
-                    <div className={`w-8 h-8 rounded-full flex items-center justify-center z-10 font-bold text-sm ${
-                      isCompleted ? 'bg-green-500 text-white' : 
-                      isActive ? 'bg-blue-600 text-white ring-4 ring-blue-100 dark:ring-blue-900' : 'bg-gray-200 dark:bg-slate-600 text-gray-500 dark:text-gray-400'
-                    }`}>
-                      {isCompleted ? <CheckCircle className="w-5 h-5" /> : stepNum}
-                    </div>
-                    <span className={`ml-4 font-medium ${isActive ? 'text-blue-600 dark:text-blue-400' : isCompleted ? 'text-green-600 dark:text-green-400' : 'text-gray-500 dark:text-gray-400'}`}>
-                      {step}
-                    </span>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* Help Card */}
-          <div className="bg-blue-50 dark:bg-slate-800 rounded-xl p-6 border border-blue-100 dark:border-slate-700">
-            <h4 className="flex items-center font-bold text-blue-900 dark:text-white mb-2">
-              <HelpCircle className="w-5 h-5 mr-2" /> Need Help?
-            </h4>
-            <p className="text-sm text-blue-800 dark:text-gray-300 mb-3">
-              Facing issues with the form? Contact our admission cell.
-            </p>
-            <div className="text-sm font-semibold text-blue-700 dark:text-blue-400">
-              📞 +91 631 222 2222 <br/>
-              📧 admissions@amcollege.ac.in
-            </div>
-          </div>
-        </div>
-
-        {/* 3. MAIN FORM AREA */}
-        <div className="lg:col-span-2">
-          <div className="bg-white dark:bg-slate-800 rounded-xl shadow-lg border border-gray-100 dark:border-slate-700 p-8">
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
-              <FileText className="mr-2 text-blue-600 dark:text-blue-400" /> 
-              {activeStep === 1 && "Personal Details"}
-              {activeStep === 2 && "Academic History"}
-              {activeStep === 3 && "Document Upload"}
-              {activeStep === 4 && "Review & Pay"}
-            </h2>
-
-            <form onSubmit={handleNext}>
-              {/* STEP 1: PERSONAL DETAILS */}
-              {activeStep === 1 && (
-                <div className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">First Name</label>
-                      <input 
-                        type="text" 
-                        required
-                        className="w-full px-4 py-3 border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-700 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none transition-colors"
-                        placeholder="John"
-                        value={formData.firstName}
-                        onChange={(e) => setFormData({...formData, firstName: e.target.value})}
-                      />
+                {[
+                  { step: "01", title: "Submit Application", desc: "Fill out the online form with accurate details." },
+                  { step: "02", title: "Document Verification", desc: "Upload necessary documents for review." },
+                  { step: "03", title: "Entrance Exam", desc: "Appear for the college entrance test (if applicable)." },
+                  { step: "04", title: "Enrollment", desc: "Pay the fee and secure your admission." }
+                ].map((item, idx) => (
+                  <div key={idx} className="relative flex items-start gap-4">
+                    <div className="flex-shrink-0 w-10 h-10 rounded-full bg-blue-50 border-2 border-white shadow-sm flex items-center justify-center text-blue-600 font-bold text-sm z-10">
+                      {item.step}
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Last Name</label>
-                      <input 
-                        type="text" 
-                        required
-                        className="w-full px-4 py-3 border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-700 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none transition-colors"
-                        placeholder="Doe"
-                        value={formData.lastName}
-                        onChange={(e) => setFormData({...formData, lastName: e.target.value})}
-                      />
+                      <h3 className="font-semibold text-gray-900 text-sm">{item.title}</h3>
+                      <p className="text-xs text-gray-500 mt-0.5">{item.desc}</p>
                     </div>
                   </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email Address</label>
-                      <input 
-                        type="email" 
-                        required
-                        className="w-full px-4 py-3 border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-700 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none transition-colors"
-                        placeholder="john@example.com"
-                        value={formData.email}
-                        onChange={(e) => setFormData({...formData, email: e.target.value})}
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Phone Number</label>
-                      <input 
-                        type="tel" 
-                        required
-                        className="w-full px-4 py-3 border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-700 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none transition-colors"
-                        placeholder="+91 99999 99999"
-                        value={formData.phone}
-                        onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Select Course</label>
-                    <select 
-                      className="w-full px-4 py-3 border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-700 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none transition-colors"
-                      value={formData.course}
-                      onChange={(e) => setFormData({...formData, course: e.target.value})}
-                    >
-                      <option>Select Course</option>
-                      <option>B.Sc (Physics)</option>
-                      <option>B.Sc (Maths)</option>
-                      <option>B.A (English)</option>
-                      <option>B.Com (Accounts)</option>
-                    </select>
-                  </div>
-                </div>
-              )}
-
-              {/* STEP 2: PLACEHOLDER FOR DEMO */}
-              {activeStep > 1 && (
-                <div className="text-center py-10">
-                  <div className="bg-yellow-50 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-200 p-4 rounded-lg inline-flex items-center mb-4">
-                    <AlertCircle className="w-5 h-5 mr-2" />
-                    <span>Demo Mode: Only Step 1 is functional</span>
-                  </div>
-                  <p className="text-gray-600 dark:text-gray-300">In a real app, you would continue filling details here.</p>
-                </div>
-              )}
-
-              {/* ACTION BUTTONS */}
-              <div className="mt-8 flex justify-end">
-                {activeStep > 1 && (
-                  <button 
-                    type="button"
-                    onClick={() => setActiveStep(prev => prev - 1)}
-                    className="px-6 py-3 mr-4 rounded-lg font-bold text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700 transition"
-                  >
-                    Back
-                  </button>
-                )}
-                <button 
-                  type="submit"
-                  className="px-8 py-3 bg-blue-600 text-white rounded-lg font-bold hover:bg-blue-700 transition shadow-md flex items-center"
-                >
-                  {activeStep === 4 ? "Submit Application" : "Save & Next"}
-                  <ChevronRight className="ml-2 w-4 h-4" />
-                </button>
+                ))}
               </div>
-            </form>
-          </div>
-        </div>
+            </div>
 
+            {/* Card 2: Important Dates (Styled differently) */}
+            <div className="bg-gradient-to-br from-blue-600 to-blue-800 text-white p-6 rounded-2xl shadow-lg">
+              <h3 className="font-bold text-lg mb-4 flex items-center">
+                <Calendar className="mr-2 w-5 h-5" /> Key Dates
+              </h3>
+              <div className="space-y-4 text-sm">
+                <div className="flex items-center justify-between bg-white/10 p-3 rounded-lg backdrop-blur-sm">
+                  <span className="opacity-90">Applications Start</span>
+                  <span className="font-bold bg-white text-blue-900 px-2 py-1 rounded text-xs">May 15</span>
+                </div>
+                <div className="flex items-center justify-between bg-white/10 p-3 rounded-lg backdrop-blur-sm">
+                  <span className="opacity-90">Submission Deadline</span>
+                  <span className="font-bold bg-red-500 text-white px-2 py-1 rounded text-xs">June 30</span>
+                </div>
+                <div className="flex items-center justify-between bg-white/10 p-3 rounded-lg backdrop-blur-sm">
+                  <span className="opacity-90">Entrance Exam</span>
+                  <span className="font-bold bg-white text-blue-900 px-2 py-1 rounded text-xs">July 10</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Card 3: Eligibility Checklist */}
+            <div className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100">
+               <h3 className="font-bold text-gray-900 mb-4 text-sm uppercase tracking-wide">Documents Required</h3>
+               <ul className="space-y-3">
+                 {["10+2 Marksheet (50% Min)", "Valid ID Proof (Aadhar/Voter ID)", "Passport Size Photos", "Migration Certificate"].map((req, i) => (
+                   <li key={i} className="flex items-center text-sm text-gray-600">
+                     <CheckCircle className="h-4 w-4 text-green-500 mr-3 flex-shrink-0" />
+                     {req}
+                   </li>
+                 ))}
+               </ul>
+            </div>
+
+          </div>
+
+          {/* RIGHT SIDE: APPLICATION FORM (Span 7 cols) */}
+          <div className="lg:col-span-7">
+            <div className="bg-white rounded-2xl shadow-xl border border-gray-200 overflow-hidden">
+              <div className="bg-gray-50 px-8 py-4 border-b border-gray-200 flex justify-between items-center">
+                <h2 className="text-xl font-bold text-gray-800">Application Form</h2>
+                <div className="flex items-center text-green-600 text-xs font-semibold bg-green-50 px-3 py-1 rounded-full border border-green-200">
+                  <ShieldCheck className="w-3 h-3 mr-1" /> Secure & Encrypted
+                </div>
+              </div>
+
+              <div className="p-8">
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  
+                  {/* Personal Details Section */}
+                  <div>
+                    <h4 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-4">Personal Details</h4>
+                    <div className="space-y-4">
+                      {/* Full Name */}
+                      <div className="relative group">
+                        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                          <User className="h-5 w-5 text-gray-400 group-focus-within:text-blue-500 transition-colors" />
+                        </div>
+                        <input 
+                          type="text" name="fullName" required
+                          placeholder="Full Legal Name"
+                          value={formData.fullName} onChange={handleChange}
+                          className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:bg-white focus:border-transparent transition-all outline-none"
+                        />
+                      </div>
+
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        {/* Email */}
+                        <div className="relative group">
+                          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <Mail className="h-5 w-5 text-gray-400 group-focus-within:text-blue-500 transition-colors" />
+                          </div>
+                          <input 
+                            type="email" name="email" required
+                            placeholder="Email Address"
+                            value={formData.email} onChange={handleChange}
+                            className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:bg-white focus:border-transparent transition-all outline-none"
+                          />
+                        </div>
+                        {/* Phone */}
+                        <div className="relative group">
+                          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <Phone className="h-5 w-5 text-gray-400 group-focus-within:text-blue-500 transition-colors" />
+                          </div>
+                          <input 
+                            type="tel" name="phone" required
+                            placeholder="Phone Number"
+                            value={formData.phone} onChange={handleChange}
+                            className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:bg-white focus:border-transparent transition-all outline-none"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="border-t border-gray-100 my-4"></div>
+
+                  {/* Academic Details Section */}
+                  <div>
+                    <h4 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-4">Academic Interest</h4>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      {/* Course Select */}
+                      <div className="relative group">
+                        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                          <BookOpen className="h-5 w-5 text-gray-400 group-focus-within:text-blue-500 transition-colors" />
+                        </div>
+                        <select 
+                          name="course" required
+                          value={formData.course} onChange={handleChange}
+                          className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:bg-white focus:border-transparent transition-all outline-none appearance-none"
+                        >
+                          <option value="">Select Program</option>
+                          <option value="B.Sc Physics">B.Sc Physics (Honours)</option>
+                          <option value="B.Sc Math">B.Sc Mathematics</option>
+                          <option value="B.Com">B.Com Accounts</option>
+                          <option value="B.A English">B.A English</option>
+                          <option value="BCA">BCA (Vocational)</option>
+                        </select>
+                        <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                           <ArrowRight className="h-4 w-4 text-gray-400 rotate-90" />
+                        </div>
+                      </div>
+
+                      {/* Percentage */}
+                      <div className="relative group">
+                        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                          <Percent className="h-5 w-5 text-gray-400 group-focus-within:text-blue-500 transition-colors" />
+                        </div>
+                        <input 
+                          type="number" name="percentage" min="0" max="100" required
+                          placeholder="12th Percentage"
+                          value={formData.percentage} onChange={handleChange}
+                          className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:bg-white focus:border-transparent transition-all outline-none"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Terms & Button */}
+                  <div className="pt-4">
+                    <button 
+                      type="submit" 
+                      disabled={isSubmitting}
+                      className={`w-full bg-blue-600 text-white font-bold py-4 rounded-xl shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50 hover:bg-blue-700 transition duration-300 flex items-center justify-center gap-2 ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
+                    >
+                      {isSubmitting ? (
+                        <>Processing...</>
+                      ) : (
+                        <>Submit Application <Send className="w-5 h-5" /></>
+                      )}
+                    </button>
+                    
+                    <p className="text-xs text-gray-400 text-center mt-6 flex items-center justify-center gap-1">
+                      <AlertCircle className="w-3 h-3" />
+                      We respect your privacy. Your data is processed securely.
+                    </p>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
+        </div>
       </div>
     </div>
   );
 };
 
-export default Addmissions;
+export default Admissions;

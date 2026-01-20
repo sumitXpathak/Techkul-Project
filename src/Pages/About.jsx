@@ -1,150 +1,188 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { 
-  History, Target, Eye, Award, User, BookOpen, Star, 
-  TrendingUp, Users, Calendar, ChevronRight, Globe, 
-  ShieldCheck, Zap, Microscope 
-} from 'lucide-react';
+import { History, Target, Eye, Award, User, BookOpen, Star, TrendingUp, Users, Calendar, ChevronRight } from 'lucide-react';
 
 const About = () => {
   const milestones = [
-    { year: "1964", title: "Foundational Vision", desc: "Inaugurated by Dr. Anugrah Narayan Sinha to pioneer higher education in Magadh." },
-    { year: "1980", title: "Constituent Milestone", desc: "Integrated as a premier constituent unit of Magadh University, expanding academic autonomy." },
-    { year: "2010", title: "National Recognition", desc: "Awarded NAAC 'A' Grade, cementing our status as a center of regional excellence." },
-    { year: "2026", title: "Global Horizon", desc: "Launching international research collaborations and AI-integrated pedagogy." }
+    { year: "1960", title: "Inception", desc: "Established under the visionary leadership of Anugrah Narayan Sinha." },
+    { year: "1985", title: "Expansion", desc: "Launched Post-Graduate wings for Science and Arts streams." },
+    { year: "2010", title: "NAAC 'A' Grade", desc: "Recognized nationally for academic excellence and infrastructure." },
+    { year: "2025", title: "Digital Era", desc: "Implementation of Smart Classrooms and Vocational Tech courses." }
   ];
 
-  const corePillars = [
-    { 
-      icon: <Microscope className="h-7 w-7 text-indigo-500" />, 
-      title: "Research Intensive", 
-      desc: "Pushing boundaries in Science and Humanities through dedicated research wings." 
-    },
-    { 
-      icon: <Globe className="h-7 w-7 text-blue-500" />, 
-      title: "Global Citizenship", 
-      desc: "Nurturing leaders who are culturally competent and globally competitive." 
-    },
-    { 
-      icon: <ShieldCheck className="h-7 w-7 text-emerald-500" />, 
-      title: "Ethical Leadership", 
-      desc: "Rooting academic success in integrity and social responsibility." 
-    }
+  const values = [
+    { icon: <BookOpen className="h-8 w-8 text-blue-600" />, title: "Academic Excellence", desc: "Pursuing the highest standards in teaching and research." },
+    { icon: <Star className="h-8 w-8 text-yellow-500" />, title: "Integrity", desc: "Upholding honesty and ethical behavior in all endeavors." },
+    { icon: <TrendingUp className="h-8 w-8 text-green-600" />, title: "Innovation", desc: "Fostering creativity and critical thinking in students." },
+    { icon: <Users className="h-8 w-8 text-purple-600" />, title: "Inclusivity", desc: "Creating a welcoming environment for students of all backgrounds." }
   ];
 
   return (
-    <div className="bg-white dark:bg-slate-900 text-slate-900 dark:text-gray-200 font-sans selection:bg-blue-100 transition-colors duration-300">
+    <div className="pt-16 min-h-screen bg-gray-50">
       
-      {/* 1. HERO SECTION */}
-      <section className="relative h-[85vh] flex items-center justify-center bg-cover bg-center overflow-hidden" 
-        style={{ backgroundImage: "url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')" }}
-      >
-        <div className="absolute inset-0 bg-slate-900/60"></div>
+      {/* 1. UPGRADED HERO HEADER */}
+      <div className="relative bg-blue-900 text-white py-24 overflow-hidden">
+        {/* Background Image with Overlay */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" 
+            alt="College Library" 
+            className="w-full h-full object-cover opacity-20"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-900 via-blue-900/90 to-blue-800/80"></div>
+        </div>
 
-        <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
-          <div className="inline-flex items-center gap-2 mb-6 border border-white/20 bg-white/10 backdrop-blur-sm px-4 py-1.5 rounded-full">
-             <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
-             <span className="text-blue-100 text-xs font-bold tracking-widest uppercase">Est. 1964</span>
+        <div className="max-w-7xl mx-auto px-4 relative z-10 text-center">
+          {/* Breadcrumbs */}
+          <div className="flex justify-center items-center gap-2 text-sm text-blue-200 mb-6">
+            <Link to="/" className="hover:text-white transition">Home</Link>
+            <ChevronRight className="h-4 w-4" />
+            <span className="text-white">About Us</span>
           </div>
 
-          <h2 className="text-5xl md:text-7xl font-serif font-medium text-white mb-8 leading-tight">
-            Shaping the <span className="italic text-blue-300">Intellect</span> of Tomorrow.
-          </h2>
-          
-          <p className="text-slate-200 text-xl mb-10 max-w-2xl mx-auto font-light leading-relaxed">
-            Empowering students with knowledge, character, and integrity. Join a legacy that stands at the intersection of tradition and transformation.
+          <span className="bg-blue-800 text-blue-200 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-4 inline-block">
+            Est. 1960
+          </span>
+          <h1 className="text-5xl md:text-6xl font-extrabold mb-6 tracking-tight">
+            Our Legacy of <span className="text-blue-400">Excellence</span>
+          </h1>
+          <p className="text-blue-100 text-xl max-w-2xl mx-auto font-light leading-relaxed">
+            For over 60 years, Anugrah Memorial College has been a beacon of hope, knowledge, and character building in the heart of Bihar.
           </p>
-
-          <div className="flex flex-wrap justify-center gap-4">
-            <button className="bg-blue-600 text-white px-8 py-4 rounded-full font-bold hover:bg-blue-700 transition-all shadow-lg hover:shadow-blue-600/30 transform hover:-translate-y-1">
-              Explore Courses
-            </button>
-            <button className="bg-white text-slate-900 px-8 py-4 rounded-full font-bold hover:bg-slate-100 transition-all shadow-lg transform hover:-translate-y-1">
-              Virtual Tour
-            </button>
-          </div>
         </div>
-      </section>
+      </div>
 
-      {/* 2. THE POWER IN NUMBERS */}
-      <section className="relative z-20 -mt-20 max-w-6xl mx-auto px-6">
-        <div className="bg-white dark:bg-slate-800 rounded-3xl shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)] dark:shadow-none grid grid-cols-2 md:grid-cols-4 p-8 md:p-12 divide-x divide-slate-100 dark:divide-slate-700 border border-transparent dark:border-slate-700 transition-colors duration-300">
-          {[
-            { label: "Faculty Experts", val: "120+" },
-            { label: "Research Papers", val: "450+" },
-            { label: "Alumni Network", val: "25k" },
-            { label: "Campus Acres", val: "15+" }
-          ].map((stat, i) => (
-            <div key={i} className="text-center px-4">
-              <div className="text-4xl font-serif font-bold text-blue-900 dark:text-blue-400 mb-1">{stat.val}</div>
-              <div className="text-slate-500 dark:text-slate-400 text-sm font-medium uppercase tracking-widest">{stat.label}</div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* 3. STRATEGIC PILLARS */}
-      <section className="py-24 max-w-7xl mx-auto px-6">
-        <div className="grid lg:grid-cols-3 gap-12">
-          {corePillars.map((pillar, i) => (
-            <div key={i} className="group p-8 rounded-2xl border border-slate-100 dark:border-slate-700 hover:border-blue-200 dark:hover:border-blue-500/50 hover:bg-blue-50/30 dark:hover:bg-slate-800 transition-all duration-500">
-              <div className="mb-6 p-4 bg-slate-50 dark:bg-slate-800 rounded-xl w-fit group-hover:scale-110 transition-transform">
-                {pillar.icon}
-              </div>
-              <h3 className="text-2xl font-serif font-bold mb-4 text-slate-900 dark:text-white">{pillar.title}</h3>
-              <p className="text-slate-600 dark:text-slate-400 leading-relaxed">{pillar.desc}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* 4. THE JOURNEY (Timeline) */}
-      <section className="py-24 bg-slate-50 dark:bg-slate-900 transition-colors duration-300">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+      {/* 2. QUICK STATS BAR (New "Thing") */}
+      <div className="bg-blue-800 text-white py-8 border-t border-blue-700">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-blue-700/50">
             <div>
-              <h2 className="text-4xl md:text-5xl font-serif font-bold text-slate-900 dark:text-white">Our Timeline</h2>
-              <p className="text-slate-500 dark:text-slate-400 mt-4 text-lg">Six decades of relentless pursuit of knowledge.</p>
+              <div className="text-3xl font-bold">60+</div>
+              <div className="text-blue-300 text-sm">Years History</div>
             </div>
-            <Link to="/archives" className="text-blue-600 dark:text-blue-400 font-bold flex items-center hover:gap-2 transition-all">
-              View Full Archive <ChevronRight className="h-5 w-5" />
-            </Link>
+            <div>
+              <div className="text-3xl font-bold">5000+</div>
+              <div className="text-blue-300 text-sm">Active Students</div>
+            </div>
+            <div>
+              <div className="text-3xl font-bold">120+</div>
+              <div className="text-blue-300 text-sm">Expert Faculty</div>
+            </div>
+            <div>
+              <div className="text-3xl font-bold">25+</div>
+              <div className="text-blue-300 text-sm">Courses</div>
+            </div>
           </div>
+        </div>
+      </div>
 
-          <div className="grid md:grid-cols-4 gap-8">
-            {milestones.map((m, i) => (
-              <div key={i} className="relative pt-8 border-t-2 border-slate-200 dark:border-slate-700 hover:border-blue-500 transition-colors group">
-                <div className="absolute -top-3 left-0 bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-200 group-hover:bg-blue-600 group-hover:text-white transition-colors px-3 py-1 text-xs font-bold rounded">
-                  {m.year}
+      <div className="max-w-7xl mx-auto px-4 py-16 space-y-24">
+        
+        {/* 3. MILESTONE TIMELINE */}
+        <div>
+          <div className="text-center mb-16">
+            <span className="text-blue-600 font-bold uppercase tracking-wider text-sm">History</span>
+            <h2 className="text-3xl font-bold text-gray-900 mt-2">A Journey Through Time</h2>
+            <div className="w-20 h-1 bg-blue-600 mx-auto mt-4 rounded-full"></div>
+          </div>
+          
+          <div className="relative">
+            {/* Vertical Line */}
+            <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-gray-200"></div>
+            
+            <div className="space-y-12">
+              {milestones.map((item, index) => (
+                <div key={index} className={`flex flex-col md:flex-row items-center justify-between ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
+                  <div className="w-full md:w-5/12"></div>
+                  <div className="z-10 bg-white text-blue-600 w-10 h-10 rounded-full flex items-center justify-center border-4 border-blue-100 shadow-sm">
+                    <Calendar className="h-5 w-5" />
+                  </div>
+                  <div className="w-full md:w-5/12 bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition duration-300 border border-gray-100 mt-4 md:mt-0 relative group">
+                    <div className={`hidden md:block absolute top-1/2 transform -translate-y-1/2 w-4 h-0.5 bg-blue-600 ${index % 2 === 0 ? '-right-4' : '-left-4'}`}></div>
+                    <span className="text-blue-600 font-bold text-lg">{item.year}</span>
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">{item.title}</h3>
+                    <p className="text-gray-600 text-sm leading-relaxed">{item.desc}</p>
+                  </div>
                 </div>
-                <h4 className="text-xl font-bold mb-3 mt-4 text-slate-900 dark:text-white">{m.title}</h4>
-                <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">{m.desc}</p>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* 4. MISSION & VISION */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="bg-gradient-to-br from-blue-900 to-blue-800 p-10 rounded-2xl text-white shadow-xl relative overflow-hidden group">
+            <Target className="absolute -bottom-4 -right-4 text-blue-700 h-40 w-40 opacity-20 group-hover:scale-110 transition duration-500" />
+            <h3 className="text-2xl font-bold mb-4 flex items-center"><Target className="mr-3" /> Our Mission</h3>
+            <p className="text-blue-100 leading-relaxed text-lg">
+              To empower students from diverse backgrounds with quality education, critical thinking skills, and ethical values, preparing them to contribute effectively to society.
+            </p>
+          </div>
+          <div className="bg-gradient-to-br from-teal-700 to-teal-600 p-10 rounded-2xl text-white shadow-xl relative overflow-hidden group">
+            <Eye className="absolute -bottom-4 -right-4 text-teal-500 h-40 w-40 opacity-20 group-hover:scale-110 transition duration-500" />
+            <h3 className="text-2xl font-bold mb-4 flex items-center"><Eye className="mr-3" /> Our Vision</h3>
+            <p className="text-teal-50 leading-relaxed text-lg">
+              To be a center of academic excellence that nurtures innovation, leadership, and social responsibility, creating global citizens rooted in Indian values.
+            </p>
+          </div>
+        </div>
+
+        {/* 5. CORE VALUES */}
+        <div>
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900">Our Core Values</h2>
+            <p className="text-gray-500 mt-2">The principles that guide our every action.</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {values.map((val, index) => (
+              <div key={index} className="bg-white p-8 rounded-xl shadow-sm hover:shadow-lg hover:-translate-y-1 transition duration-300 border border-gray-100 text-center">
+                <div className="bg-gray-50 w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-6">
+                  {val.icon}
+                </div>
+                <h3 className="text-lg font-bold text-gray-900 mb-2">{val.title}</h3>
+                <p className="text-gray-500 text-sm leading-relaxed">{val.desc}</p>
               </div>
             ))}
           </div>
         </div>
-      </section>
 
-      {/* 5. LEADERSHIP STATEMENT */}
-      <section className="py-24 max-w-5xl mx-auto px-6 text-center">
-        <div className="relative inline-block mb-8">
-            <div className="absolute inset-0 bg-blue-100 dark:bg-blue-900 rounded-full blur-xl opacity-50"></div>
-            <img 
-            src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=300&q=80" 
-            alt="Principal" 
-            className="relative w-24 h-24 rounded-full mx-auto object-cover border-4 border-white dark:border-slate-800 shadow-lg"
-            />
+        {/* 6. PRINCIPAL'S DESK & CTA */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {/* Principal */}
+            <div className="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
+                <div className="bg-gray-100 h-32 flex items-center justify-center">
+                    <User className="h-16 w-16 text-gray-400" />
+                </div>
+                <div className="p-6 text-center -mt-12">
+                    <div className="w-24 h-24 bg-white rounded-full mx-auto flex items-center justify-center shadow-md border-4 border-white">
+                         <img src="1755320413Prof.(Dr. ) Md.  Nazir Akhtar.png" alt="Principal" className="rounded-full w-full h-full object-cover"/>
+                    </div>
+                    <h3 className="text-xl font-bold text-gray-900 mt-4">Md. Nazir Akhtar</h3>
+                    <p className="text-blue-600 font-medium text-sm mb-4">Principal</p>
+                    <p className="text-gray-500 text-sm italic">"Education is the kindling of a flame, not the filling of a vessel."</p>
+                </div>
+            </div>
+
+            {/* CTA Box */}
+            <div className="lg:col-span-2 bg-blue-600 rounded-2xl shadow-lg p-10 text-white flex flex-col justify-center items-start relative overflow-hidden">
+                <div className="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 bg-blue-500 rounded-full opacity-50 blur-3xl"></div>
+                
+                <h2 className="text-3xl font-bold mb-4 relative z-10">Ready to start your journey?</h2>
+                <p className="text-blue-100 mb-8 max-w-lg relative z-10">
+                    Join thousands of successful alumni who started their path to success at Anugrah Memorial College. Applications are now open.
+                </p>
+                <div className="flex gap-4 relative z-10">
+                    <Link to="/admissions" className="bg-white text-blue-900 px-8 py-3 rounded-lg font-bold hover:bg-gray-100 transition shadow-lg">
+                        Apply Now
+                    </Link>
+                    <Link to="/contact" className="border-2 border-white text-white px-8 py-3 rounded-lg font-bold hover:bg-white/10 transition">
+                        Contact Us
+                    </Link>
+                </div>
+            </div>
         </div>
-        <blockquote className="text-3xl md:text-4xl font-serif italic text-slate-800 dark:text-slate-200 mb-8 leading-tight">
-          "Our goal is not just to confer degrees, but to ignite a curiosity that remains 
-          insatiable throughout a student's life."
-        </blockquote>
-        <cite className="not-italic">
-          <span className="block text-xl font-bold text-slate-900 dark:text-white">Dr. R.K. Sharma</span>
-          <span className="text-blue-600 dark:text-blue-400 font-medium tracking-widest uppercase text-sm">Principal, AM College</span>
-        </cite>
-      </section>
 
+      </div>
     </div>
   );
 };
