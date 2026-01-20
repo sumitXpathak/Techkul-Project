@@ -53,6 +53,7 @@ const Admissions = () => {
             Applications Open for 2026-27
           </div>
           <h1 className="text-4xl md:text-5xl font-extrabold mb-4 tracking-tight">Begin Your Journey</h1>
+          <image alt=""/>
           <p className="text-blue-100 text-lg max-w-2xl mx-auto font-light">
             Join a legacy of excellence. Complete the form below to take the first step towards your future at Anugrah Memorial College.
           </p>
