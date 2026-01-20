@@ -155,10 +155,10 @@ const About = () => {
                 </div>
                 <div className="p-6 text-center -mt-12">
                     <div className="w-24 h-24 bg-white rounded-full mx-auto flex items-center justify-center shadow-md border-4 border-white">
-                         <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=200&q=80" alt="Principal" className="rounded-full w-full h-full object-cover"/>
+                         <img src="1755320413Prof.(Dr. ) Md.  Nazir Akhtar.png" alt="Principal" className="rounded-full w-full h-full object-cover"/>
                     </div>
-                    <h3 className="text-xl font-bold text-gray-900 mt-4">Dr. R.K. Sharma</h3>
-                    <p className="text-blue-600 font-medium text-sm mb-4">Princi</p>
+                    <h3 className="text-xl font-bold text-gray-900 mt-4">Md. Nazir Akhtar</h3>
+                    <p className="text-blue-600 font-medium text-sm mb-4">Principal</p>
                     <p className="text-gray-500 text-sm italic">"Education is the kindling of a flame, not the filling of a vessel."</p>
                 </div>
             </div>

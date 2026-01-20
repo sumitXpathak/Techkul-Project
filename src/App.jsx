@@ -1,7 +1,7 @@
 import React from 'react';
 // CHANGE 1: Import HashRouter instead of BrowserRouter to fix GitHub Pages routing
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
-
+import ScrollToTop from './components/ScrollToTop';
 import Navbar from './components/Navbar';
 import Admissions from './Pages/Addmissions';
 import Footer from './components/Footer';
@@ -16,6 +16,7 @@ const App = () => {
   return (
     // CHANGE 2: Use Router (which is now HashRouter)
     <Router>
+      <ScrollToTop />
       <div className="font-sans text-gray-900">
         <Navbar />
         
