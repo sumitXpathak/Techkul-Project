@@ -21,6 +21,7 @@ const App = () => {
       <div className="font-sans text-gray-900 bg-white dark:bg-slate-900 dark:text-white flex flex-col min-h-screen transition-colors duration-300">
         <Navbar />
         
+        <div className="flex-grow">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
@@ -30,7 +31,7 @@ const App = () => {
           <Route path="/contact" element={<Contact />} />
           <Route path="/tour" element={<VirtualTour />} />
         </Routes>
-        
+        </div>
         {/* Added Footer here so it appears on all pages */}
         <Footer />
       </div>
