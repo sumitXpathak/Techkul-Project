@@ -17,6 +17,7 @@ const App = () => {
     // CHANGE 2: Use Router (which is now HashRouter)
     <Router>
       <ScrollToTop />
+      <div className="bg-white dark:bg-slate-800 py-16">...</div>
       <div className="font-sans text-gray-900">
         <Navbar />
         
