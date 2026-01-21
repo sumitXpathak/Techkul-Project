@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { 
   BookOpen, Clock, Users, FileText, Download, 
   Microscope, Palette, Calculator, GraduationCap, 
-  Search, ArrowUpRight, Sparkles 
+  Search, ArrowUpRight, Sparkles, ArrowRight 
 } from 'lucide-react';
 
 const coursesData = {
