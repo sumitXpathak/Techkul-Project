@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 
 // Import ScrollToTop
 import ScrollToTop from './components/ScrollToTop'; 
@@ -16,10 +16,10 @@ import Tour from './Pages/Tour';
 
 const App = () => {
   return (
-    <Router>
+    /* Added basename to match the GitHub repository name */
+    <Router basename="/Techkul-Project"> 
       <ScrollToTop />
       
-      {/* --- FIX IS HERE: Added dark:bg-slate-900 and dark:text-white --- */}
       <div className="font-sans text-gray-900 bg-white dark:bg-slate-900 dark:text-white flex flex-col min-h-screen transition-colors duration-300">
         <Navbar />
         
@@ -32,6 +32,8 @@ const App = () => {
             <Route path="/academics" element={<Academics />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/tour" element={<Tour />} />
+            {/* Added a catch-all for the friend's app too */}
+            <Route path="*" element={<div className="p-10 text-center"><h2>404 - Page Not Found</h2></div>} />
           </Routes>
         </div>
 

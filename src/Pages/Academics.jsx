@@ -2,11 +2,10 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { 
   BookOpen, Clock, Users, FileText, Download, 
-  Microscope, Palette, Calculator, ChevronRight, 
-  GraduationCap, Search, ArrowUpRight, Sparkles 
+  Microscope, Palette, Calculator, GraduationCap, 
+  Search, ArrowUpRight, Sparkles, ArrowRight 
 } from 'lucide-react';
 
-// Mock Data with specific color themes for streams
 const coursesData = {
   Science: {
     theme: "blue",
@@ -43,7 +42,6 @@ const coursesData = {
 const Academics = () => {
   const [activeTab, setActiveTab] = useState('Science');
 
-  // Helper to dynamically get color classes based on active tab
   const getThemeColor = (type) => {
     const theme = coursesData[activeTab].theme;
     if (type === 'bg') {
@@ -65,16 +63,13 @@ const Academics = () => {
   };
 
   return (
-    <div className="font-sans bg-slate-50 min-h-screen">
+    <div className="font-sans bg-gray-50 min-h-screen">
       
-      {/* 1. HERO SECTION WITH SEARCH UI */}
+      {/* 1. HERO SECTION */}
       <div className="relative bg-slate-900 pt-32 pb-24 overflow-hidden">
-        {/* Abstract Grid Pattern */}
         <div className="absolute inset-0 z-0 opacity-10" 
              style={{ backgroundImage: 'radial-gradient(#ffffff 1px, transparent 1px)', backgroundSize: '30px 30px' }}>
         </div>
-        
-        {/* Glow Effects */}
         <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl -mr-20 -mt-20"></div>
         <div className="absolute bottom-0 left-0 w-80 h-80 bg-purple-500/20 rounded-full blur-3xl -ml-20 -mb-20"></div>
 
@@ -96,14 +91,14 @@ const Academics = () => {
                     </p>
                 </div>
 
-                {/* Simulated Search Box */}
+                {/* Glass Search Box */}
                 <div className="w-full md:w-auto">
-                    <div className="bg-white/10 backdrop-blur-md border border-white/20 p-2 rounded-2xl flex items-center w-full md:w-80">
-                        <Search className="text-white/60 ml-3 w-5 h-5" />
+                    <div className="group bg-white/5 backdrop-blur-md border border-white/10 p-2 rounded-2xl flex items-center w-full md:w-80 hover:bg-white/10 transition-colors focus-within:ring-2 focus-within:ring-blue-400/50">
+                        <Search className="text-white/60 ml-3 w-5 h-5 group-focus-within:text-blue-300" />
                         <input 
                             type="text" 
-                            placeholder="Search courses (e.g. Physics)" 
-                            className="bg-transparent border-none text-white placeholder-white/50 focus:ring-0 w-full px-3 py-2"
+                            placeholder="Search courses..." 
+                            className="bg-transparent border-none text-white placeholder-white/50 focus:outline-none w-full px-3 py-2"
                         />
                     </div>
                 </div>
@@ -113,21 +108,20 @@ const Academics = () => {
 
       <div className="max-w-7xl mx-auto px-4 py-16 -mt-10 relative z-20">
         
-        {/* 2. STREAM NAVIGATOR (TABS) */}
+        {/* 2. TABS */}
         <div className="bg-white rounded-2xl p-2 shadow-xl border border-gray-100 mb-12 inline-flex flex-wrap md:flex-nowrap gap-2 mx-auto w-full md:w-auto justify-center">
             {Object.keys(coursesData).map((tab) => {
                 const isActive = activeTab === tab;
                 const data = coursesData[tab];
                 const Icon = data.icon;
                 
-                // Color logic for buttons
                 let activeClass = "";
                 if (isActive) {
                     if (data.theme === 'blue') activeClass = "bg-blue-600 text-white shadow-lg shadow-blue-500/30";
                     if (data.theme === 'rose') activeClass = "bg-rose-600 text-white shadow-lg shadow-rose-500/30";
                     if (data.theme === 'amber') activeClass = "bg-amber-600 text-white shadow-lg shadow-amber-500/30";
                 } else {
-                    activeClass = "text-gray-500 hover:bg-gray-50";
+                    activeClass = "text-gray-500 hover:bg-gray-50 hover:text-gray-900";
                 }
 
                 return (
@@ -149,9 +143,8 @@ const Academics = () => {
         {/* 3. COURSE GRID */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-24">
           {coursesData[activeTab].courses.map((course, index) => (
-            <div key={index} className="group relative bg-white rounded-3xl p-8 shadow-sm hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 border border-gray-100 overflow-hidden">
-                {/* Top Border Color Line */}
-                <div className={`absolute top-0 left-0 w-full h-1.5 ${getThemeColor('bg')}`}></div>
+            <div key={index} className="group relative bg-white rounded-3xl p-8 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border border-gray-100 overflow-hidden">
+                <div className={`absolute top-0 left-0 w-full h-1.5 ${getThemeColor('bg')} transform origin-left scale-x-100 transition-transform duration-500`}></div>
                 
                 <div className="flex justify-between items-start mb-6">
                     <div>
@@ -162,8 +155,8 @@ const Academics = () => {
                             {course.title}
                         </h3>
                     </div>
-                    <div className="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center group-hover:bg-gray-100 transition-colors">
-                        <GraduationCap className="w-5 h-5 text-gray-400" />
+                    <div className="w-12 h-12 rounded-full bg-gray-50 flex items-center justify-center group-hover:bg-gray-100 transition-colors border border-gray-100">
+                        <GraduationCap className="w-6 h-6 text-gray-400 group-hover:text-gray-600" />
                     </div>
                 </div>
               
@@ -173,11 +166,11 @@ const Academics = () => {
               
                 <div className="flex items-center justify-between border-t border-gray-100 pt-6">
                     <div className="flex gap-4 text-sm text-gray-500 font-medium">
-                        <div className="flex items-center">
-                            <Clock className="h-4 w-4 mr-1.5" /> {course.duration}
+                        <div className="flex items-center bg-gray-50 px-2 py-1 rounded">
+                            <Clock className="h-4 w-4 mr-1.5 text-gray-400" /> {course.duration}
                         </div>
-                        <div className="flex items-center">
-                            <Users className="h-4 w-4 mr-1.5" /> {course.seats} Seats
+                        <div className="flex items-center bg-gray-50 px-2 py-1 rounded">
+                            <Users className="h-4 w-4 mr-1.5 text-gray-400" /> {course.seats} Seats
                         </div>
                     </div>
                     
@@ -189,22 +182,22 @@ const Academics = () => {
           ))}
         </div>
 
-        {/* 4. DEPARTMENT HIGHLIGHTS (Modern Bento Grid) */}
+        {/* 4. INFO GRID */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-24">
-            <div className="bg-blue-900 rounded-3xl p-8 text-white md:col-span-1 flex flex-col justify-between overflow-hidden relative">
+            <div className="bg-blue-900 rounded-3xl p-8 text-white md:col-span-1 flex flex-col justify-between overflow-hidden relative group">
                 <div className="relative z-10">
-                    <Sparkles className="w-8 h-8 text-yellow-400 mb-4" />
+                    <Sparkles className="w-8 h-8 text-yellow-400 mb-4 animate-pulse" />
                     <h3 className="text-2xl font-bold mb-2">Research Focus</h3>
                     <p className="text-blue-200 text-sm">Our labs are equipped with the latest technology to foster innovation.</p>
                 </div>
-                <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-blue-700 rounded-full blur-2xl"></div>
+                <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-blue-700 rounded-full blur-2xl group-hover:bg-blue-600 transition-colors duration-500"></div>
             </div>
             
-            <div className="bg-white rounded-3xl p-8 border border-gray-100 shadow-lg md:col-span-2 flex items-center relative overflow-hidden">
+            <div className="bg-white rounded-3xl p-8 border border-gray-100 shadow-lg md:col-span-2 flex items-center relative overflow-hidden group hover:shadow-xl transition-shadow">
                 <div className="absolute right-0 top-0 h-full w-1/3 bg-gradient-to-l from-gray-50 to-transparent"></div>
-                <div className="relative z-10">
+                <div className="relative z-10 w-full">
                    <div className="flex items-center gap-3 mb-4">
-                       <div className="bg-green-100 p-2 rounded-lg">
+                       <div className="bg-green-100 p-2 rounded-lg group-hover:scale-110 transition-transform">
                            <BookOpen className="w-6 h-6 text-green-600" />
                        </div>
                        <h3 className="text-2xl font-bold text-gray-900">Central Library</h3>
@@ -212,12 +205,14 @@ const Academics = () => {
                    <p className="text-gray-600 max-w-lg mb-6">
                        Access over 50,000 physical books and a massive digital repository of journals (JSTOR, IEEE) accessible to all students 24/7.
                    </p>
-                   <button className="text-blue-600 font-bold text-sm hover:underline">Explore Library Catalog &rarr;</button>
+                   <button className="text-blue-600 font-bold text-sm hover:underline flex items-center">
+                       Explore Library Catalog <ArrowRight className="ml-1 w-4 h-4" />
+                   </button>
                 </div>
             </div>
         </div>
 
-        {/* 5. DOWNLOADS SECTION */}
+        {/* 5. DOWNLOADS */}
         <div className="max-w-5xl mx-auto">
             <div className="flex items-center justify-between mb-8">
                  <h2 className="text-2xl font-bold text-gray-900">Student Resources</h2>
@@ -230,8 +225,8 @@ const Academics = () => {
                     { title: "Academic Calendar", size: "1.1 MB", type: "PDF" },
                     { title: "Scholarship Guide", size: "5.0 MB", type: "PDF" }
                 ].map((item, i) => (
-                    <div key={i} className="group flex items-start gap-4 p-5 bg-white border border-gray-200 rounded-2xl hover:border-blue-300 hover:shadow-md transition-all cursor-pointer">
-                        <div className="w-12 h-12 bg-red-50 text-red-500 rounded-xl flex items-center justify-center shrink-0">
+                    <div key={i} className="group flex items-start gap-4 p-5 bg-white border border-gray-200 rounded-2xl hover:border-blue-400 hover:shadow-lg hover:-translate-y-1 transition-all cursor-pointer">
+                        <div className="w-12 h-12 bg-red-50 text-red-500 rounded-xl flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
                             <FileText className="w-6 h-6" />
                         </div>
                         <div className="flex-1 min-w-0">
