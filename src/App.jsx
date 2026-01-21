@@ -17,7 +17,7 @@ import Tour from './Pages/Tour';
 const App = () => {
   return (
     /* Added basename to match the GitHub repository name */
-    <Router basename="/Techkul-Project"> 
+    <Router> 
       <ScrollToTop />
       
       <div className="font-sans text-gray-900 bg-white dark:bg-slate-900 dark:text-white flex flex-col min-h-screen transition-colors duration-300">
